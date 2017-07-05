@@ -93,12 +93,8 @@ macGyverPos = []
 loadMap()
 paintMap()
 
-<<<<<<< HEAD:main.py
 main.bind("<z>", lambda event, sens='N' : moveMacGyver(event, sens))
 main.bind("<d>", lambda event, sens='E' : moveMacGyver(event, sens))
 main.bind("<s>", lambda event, sens='S' : moveMacGyver(event, sens))
 main.bind("<q>", lambda event, sens='W' : moveMacGyver(event, sens))
 main.mainloop()
-=======
-mainloop()
->>>>>>> 5957025a7dcf5547304a3121c6c2d5957614bf15:Main.py
