@@ -5,4 +5,7 @@ class Guardian(Entities):
 		super(Guardian, self).__init__(x,y)
 		self.symbole = 'G'
 	def checkMacGyver(self, macGyver):
-		return True
+		if(len(macGyver.getBackpack()) == 3):
+			return True
+		else:
+			return False

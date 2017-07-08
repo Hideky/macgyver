@@ -6,8 +6,8 @@ class MacGyver(Entities):
 		self.symbole = 'M'
 		self.backpack = []
 
-	def getBackpack():
+	def getBackpack(self):
 		return self.backpack
 
-	def addToBackpack(item):
+	def addToBackpack(self, item):
 		self.backpack.append(item)	
