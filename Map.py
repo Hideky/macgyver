@@ -15,13 +15,13 @@ class Map:
 		# Loading Ressources once
 		self.canvas = canvas
 		self.map = []
-		self.floorI     = tk.PhotoImage(file="./ressources/floor1.png")
-		self.wallI      = tk.PhotoImage(file="./ressources/wall.png")
-		self.needleI    = tk.PhotoImage(file="./ressources/needle.png")
-		self.rodI       = tk.PhotoImage(file="./ressources/rod.png")
-		self.etherI     = tk.PhotoImage(file="./ressources/ether.png")
-		self.macGyverI  = tk.PhotoImage(file="./ressources/MacGyver.png")
-		self.guardianI  = tk.PhotoImage(file="./ressources/guardian.png")
+		self.floorI     = tk.PhotoImage(file="./resources/floor1.png")
+		self.wallI      = tk.PhotoImage(file="./resources/wall.png")
+		self.needleI    = tk.PhotoImage(file="./resources/needle.png")
+		self.rodI       = tk.PhotoImage(file="./resources/rod.png")
+		self.etherI     = tk.PhotoImage(file="./resources/ether.png")
+		self.macGyverI  = tk.PhotoImage(file="./resources/MacGyver.png")
+		self.guardianI  = tk.PhotoImage(file="./resources/guardian.png")
 
 	def loadMap(self):
 		# Open map and parse it as 2D Array
@@ -29,23 +29,27 @@ class Map:
 			self.map = [[case for case in line.strip("\n")] for line in file]
 
 		# Set random position for entities (character/item)
-		entities = ['M', 'G', '|', '=', '§']
 		for i, line in enumerate(self.map):
 			for y, case in enumerate(line):
 				if case == ' ':
 					line[y] = Floor()
 				if case == '*':
 					line[y] = Wall()
-				if case == '@':
-					line[y] = entities.pop(random.randrange(len(entities)))
-					if(line[y] == 'M'):
-						self.macGyver = MacGyver(i, y)
-						line[y] = self.macGyver
-						continue
-					if(line[y] == 'G'):
-						line[y] = Guardian(i, y)
-						continue
-					line[y] = Items(i, y, line[y])
+				if(line[y] == 'M'):
+					self.macGyver = MacGyver(i, y)
+					line[y] = self.macGyver
+					continue
+				if(line[y] == 'G'):
+					line[y] = Guardian(i, y)
+					continue
+
+		items = ['|', '=', '§']
+		while len(items) != 0:
+			randX = random.randrange(len(self.map))
+			randY = random.randrange(len(self.map[0]))
+			if self.map[randX][randY].__str__() != ' ':
+				continue
+			self.map[randX][randY] = Items(randX, randY, items.pop())
 
 
 	def paintMap(self):

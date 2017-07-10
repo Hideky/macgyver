@@ -12,7 +12,7 @@ main.title("McGyver Escape Game")
 canvas=Canvas(main, width=300, height=300)
 canvas.pack()
 
-map = Map("./ressources/map.txt", canvas)
+map = Map("./resources/map.txt", canvas)
 macGyverPos = []
 
 # Loading game
