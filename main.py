@@ -19,8 +19,8 @@ macGyverPos = []
 map.loadMap()
 map.paintMap()
 
-main.bind("<z>", lambda event, sens='N' : map.moveMacGyver(event, sens))
-main.bind("<d>", lambda event, sens='E' : map.moveMacGyver(event, sens))
-main.bind("<s>", lambda event, sens='S' : map.moveMacGyver(event, sens))
-main.bind("<q>", lambda event, sens='W' : map.moveMacGyver(event, sens))
+main.bind("<Up>", lambda event, sens='N' : map.moveMacGyver(event, sens))
+main.bind("<Right>", lambda event, sens='E' : map.moveMacGyver(event, sens))
+main.bind("<Down>", lambda event, sens='S' : map.moveMacGyver(event, sens))
+main.bind("<Left>", lambda event, sens='W' : map.moveMacGyver(event, sens))
 main.mainloop()
