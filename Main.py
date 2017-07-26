@@ -1,26 +1,24 @@
-import random
-import tkinter as tk
-from tkinter import *
-from tkinter import messagebox
+""" Main Class """
+from tkinter import Tk, Canvas
 from Map import Map
 
-# Window
-main=Tk()
-main.title("McGyver Escape Game")
+def main():
+    """Main function"""
+    window = Tk()
+    window.title("McGyver Escape Game")
 
-# Canvas
-canvas=Canvas(main, width=300, height=300)
-canvas.pack()
+    canvas = Canvas(window, width=300, height=300)
+    canvas.pack()
 
-map = Map("./resources/map.txt", canvas)
-macGyverPos = []
+    mapg = Map("./resources/map.txt", canvas)
+    mapg.load_map()
+    mapg.paint_map()
 
-# Loading game
-map.loadMap()
-map.paintMap()
+    window.bind("<Up>", lambda event, sens='N': mapg.move_macgyver(sens))
+    window.bind("<Right>", lambda event, sens='E': mapg.move_macgyver(sens))
+    window.bind("<Down>", lambda event, sens='S': mapg.move_macgyver(sens))
+    window.bind("<Left>", lambda event, sens='W': mapg.move_macgyver(sens))
 
-main.bind("<Up>", lambda event, sens='N' : map.moveMacGyver(event, sens))
-main.bind("<Right>", lambda event, sens='E' : map.moveMacGyver(event, sens))
-main.bind("<Down>", lambda event, sens='S' : map.moveMacGyver(event, sens))
-main.bind("<Left>", lambda event, sens='W' : map.moveMacGyver(event, sens))
-main.mainloop()
+    window.mainloop()
+
+main()

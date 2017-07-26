@@ -1,11 +1,15 @@
+"""Guardian Class"""
 from Entities import Entities
 
 class Guardian(Entities):
-	def __init__(self, x, y):
-		super(Guardian, self).__init__(x,y)
-		self.symbole = 'G'
-	def checkMacGyver(self, macGyver):
-		if(len(macGyver.getBackpack()) == 3):
-			return True
-		else:
-			return False
+    """Guardian entity"""
+    def __init__(self, x, y):
+        super(Guardian, self).__init__(x, y)
+        self.symbole = 'G'
+
+    @classmethod
+    def check_macgyver(cls, macgyver):
+        """Check if MacGyver got 3 items"""
+        if len(macgyver.get_backpack()) == 3:
+            return True
+        return False

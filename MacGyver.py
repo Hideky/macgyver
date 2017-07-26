@@ -1,13 +1,17 @@
+"""MacGyver Class"""
 from Entities import Entities
 
 class MacGyver(Entities):
-	def __init__(self, x, y):
-		super(MacGyver, self).__init__(x,y)
-		self.symbole = 'M'
-		self.backpack = []
+    """MacGyver entity"""
+    def __init__(self, x, y):
+        super(MacGyver, self).__init__(x, y)
+        self.symbole = 'M'
+        self.backpack = []
 
-	def getBackpack(self):
-		return self.backpack
+    def get_backpack(self):
+        """Return backpack attribute"""
+        return self.backpack
 
-	def addToBackpack(self, item):
-		self.backpack.append(item)	
+    def add_to_backpack(self, item):
+        """Add item to the backpack attribute"""
+        self.backpack.append(item)
